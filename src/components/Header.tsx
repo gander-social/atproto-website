@@ -82,10 +82,10 @@ export const Header = forwardRef<
         <nav className="hidden md:block">
           <ul role="list" className="flex items-center gap-8">
             <TopLevelNavItem href="/sdks">SDKs</TopLevelNavItem>
-            <TopLevelNavItem href="https://docs.bsky.app/blog">
+            <TopLevelNavItem href="https://docs.gndr.app/blog">
               Blog
             </TopLevelNavItem>
-            <TopLevelNavItem href="https://github.com/bluesky-social/atproto">
+            <TopLevelNavItem href="https://github.com/gander-social/atproto">
               GitHub
             </TopLevelNavItem>
             <LanguageChanger />

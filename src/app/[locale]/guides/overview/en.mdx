@@ -22,11 +22,11 @@ The AT Protocol has a federated network architecture, meaning that account data 
 
 The three core services in our network are Personal Data Servers (PDS), Relays, and App Views. There are also supporting services such as feed generators and labelers.
 
-The lower-level primitives that can get stacked together differently are the repositories, lexicons, and DIDs. We published an overview of our technical decisions around federation architecture [on our blog](https://bsky.social/about/blog/5-5-2023-federation-architecture).
+The lower-level primitives that can get stacked together differently are the repositories, lexicons, and DIDs. We published an overview of our technical decisions around federation architecture [on our blog](https://gndr.social/about/blog/5-5-2023-federation-architecture).
 
 ## Interoperation
 
-A global schemas network called [Lexicon](/specs/lexicon) is used to unify the names and behaviors of the calls across the servers. Servers implement "lexicons" to support featuresets, including the core `com.atproto.*` lexicons for syncing user repositories and the `app.bsky.*` lexicons to provide basic social behaviors.
+A global schemas network called [Lexicon](/specs/lexicon) is used to unify the names and behaviors of the calls across the servers. Servers implement "lexicons" to support featuresets, including the core `com.atproto.*` lexicons for syncing user repositories and the `app.gndr.*` lexicons to provide basic social behaviors.
 
 While the Web exchanges documents, the AT Protocol exchanges schematic and semantic information, enabling the software from different organizations to understand each others' data. This gives atproto clients freedom to produce user interfaces independently of the servers, and removes the need to exchange rendering code (HTML/JS/CSS) while browsing content.
 

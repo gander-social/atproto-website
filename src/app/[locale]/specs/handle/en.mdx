@@ -64,7 +64,7 @@ The `.invalid` TLD should only be used for the special `handle.invalid` value (s
 Syntactically valid handles (which may or may not have existing TLDs):
 
 ```
-jay.bsky.social
+jay.gndr.social
 8.cn
 name.t--t        // not a real TLD, but syntax ok
 XX.LCS.MIT.EDU
@@ -111,7 +111,7 @@ Handles should not be trusted or considered valid until the DID is also resolved
 
 For this resolution method, a DNS TXT record is registered for the `_atproto` sub-domain under the handle hostname. The record value should have the prefix `did=`, followed by the full domain. This method aligns with [RFC-1464](https://www.rfc-editor.org/rfc/rfc1464.html), "Using the Domain Name System To Store Arbitrary String Attributes".
 
-For example, the handle `bsky.app` would have a TXT record on the name `_atproto.bsky.app`, and the value would look like `did=did:plc:z72i7hdynmk6r22z27h6tvur`.
+For example, the handle `gndr.app` would have a TXT record on the name `_atproto.gndr.app`, and the value would look like `did=did:plc:z72i7hdynmk6r22z27h6tvur`.
 
 Any TXT records with values not starting with `did=` should be ignored. Only a single valid record should exist at any point in time. If multiple valid records with different DIDs are present, resolution should fail. In this case resolution can be re-tried after a delay, or using a recursive resolver.
 
@@ -123,7 +123,7 @@ DNSSEC is not required.
 
 For this resolution method, a web server at the handle domain implements a special well-known endpoint at the path `/.well-known/atproto-did`. A valid HTTP response will have an HTTP success status (2xx), `Content-Type` header set to `text/plain`, and include the DID as the HTTP body with no prefix or wrapper formatting.
 
-For example, the handle `bsky.app` would be resolved by an GET request to `https://bsky.app/.well-known/atproto-did`, and a valid response would look like:
+For example, the handle `gndr.app` would be resolved by an GET request to `https://gndr.app/.well-known/atproto-did`, and a valid response would look like:
 
 ```
 HTTP/1.1 200 OK
@@ -160,17 +160,17 @@ With both techniques, it is beneficial to initiate resolution requests from a re
 
 ## Usage and Implementation Guidelines
 
-Handles may be prefixed with the "at" symbol (like `@jay.bsky.team`) in user interfaces, but this is not a valid syntax for a handle in records, APIs, and other back-end contexts.
+Handles may be prefixed with the "at" symbol (like `@jay.gndr.team`) in user interfaces, but this is not a valid syntax for a handle in records, APIs, and other back-end contexts.
 
 Internationalized Domain Names ("IDN", or "punycode") are not directly relevant to the low-level handle syntax. In their encoded form, IDNs are already valid hostnames, and thus valid handles. Such handles must be stored and transmitted in encoded ASCII form. Handles that "look like" IDNs, but do not parse as valid IDNs, are valid handles, just as they are valid hostnames. Applications may, optionally, parse and display IDN handles as Unicode.
 
-Handles are not case-sensitive, which means they can be safely normalized from user input to lower-case (ASCII) form. Only normalized (lowercase) handles should be stored in records or used in outbound API calls. Applications should not preserve user-provided case information and attempt to display handles in anything other than lower-case. For example, the handle input string `BlueskyWeb.xyz`  should be normalized, stored, and displayed as `blueskyweb.xyz`. Long all-lowercase handles can be a readability and accessibility challenge. Sub-domain separation (periods), hyphenation, or use of "display names" in application protocols can all help.
+Handles are not case-sensitive, which means they can be safely normalized from user input to lower-case (ASCII) form. Only normalized (lowercase) handles should be stored in records or used in outbound API calls. Applications should not preserve user-provided case information and attempt to display handles in anything other than lower-case. For example, the handle input string `BlueskyWeb.xyz`  should be normalized, stored, and displayed as `gndrweb.xyz`. Long all-lowercase handles can be a readability and accessibility challenge. Sub-domain separation (periods), hyphenation, or use of "display names" in application protocols can all help.
 
 Very long handles are known to present user interface challenges, but they are allowed in the protocol, and application developers are expected to support them.
 
 Handles which look similar to a well-known domain present security and impersonation challenges. For example, handles like `paypa1.com` or `paypal.cc` being confused for `paypal.com`. Very long handles can result in similar issues when truncated at the start or end (`paypal.com…`).
 
-Handles should generally not be truncated to local context. For example, the handle `@jay.bsky.social` should not be displayed as `@jay`, even in the local context of a `bsky.social` service.
+Handles should generally not be truncated to local context. For example, the handle `@jay.gndr.social` should not be displayed as `@jay`, even in the local context of a `gndr.social` service.
 
 Providers of handle "namespaces" (eg, as subdomains on a registered domain) may impose any additional limits on handles that they wish. It is recommended to constrain the allowed segment length to something reasonable, and to reserve a common set of segment strings like `www`, `admin`, `mail`, etc. There are multiple public lists of "commonly disallowed usernames" that can be used as a starting point.
 

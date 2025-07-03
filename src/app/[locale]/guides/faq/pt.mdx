@@ -6,7 +6,7 @@ export const metadata = {
 
 # FAQ
 
-Perguntas Frequentes sobre o Authenticated Transfer Protocol (AT Proto). Para FAQ sobre Bluesky, visite [aqui](https://bsky.social/about/faq).
+Perguntas Frequentes sobre o Authenticated Transfer Protocol (AT Proto). Para FAQ sobre Bluesky, visite [aqui](https://gndr.social/about/faq).
 
 ## O Protocolo AT é uma blockchain?
 
@@ -41,7 +41,7 @@ XRPC usa [Lexicon](/guides/lexicon) para descrever chamadas HTTP e mapeá-las pa
 ```typescript
 await api.com.atproto.repo.listRecords({
   user: 'alice.com',
-  collection: 'app.bsky.feed.post'
+  collection: 'app.gndr.feed.post'
 })
 ```
 
@@ -50,7 +50,7 @@ await api.com.atproto.repo.listRecords({
 ```text
 GET /xrpc/com.atproto.repo.listRecords
   ?user=alice.com
-  &collection=app.bsky.feed.post
+  &collection=app.gndr.feed.post
 ```
 
 O Lexicon estabelece um id de método compartilhado (`com.atproto.repo.listRecords`) e os parâmetros de consulta esperados, corpo de entrada e corpo de saída. Ao usar o Lexicon, obtemos verificações de tempo de execução nas entradas e saídas da chamada e podemos gerar código digitado como o exemplo de chamada de API acima.

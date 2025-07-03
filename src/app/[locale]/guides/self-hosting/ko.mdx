@@ -18,7 +18,7 @@ Bluesky PDS를 자체 호스팅한다는 것은 ATProto 네트워크와 연동�
 * [PDS가 온라인 상태이며 접근 가능한지 확인하기](#verifying-that-your-pds-is-online-and-accessible)
 * [pdsadmin을 사용하여 계정 생성](#creating-an-account-using-pdsadmin)
 * [초대 코드를 사용하여 계정 생성](#creating-an-account-using-an-invite-code)
-* [PDS와 함께 Bluesky 앱 사용하기](#using-the-bluesky-app-with-your-pds)
+* [PDS와 함께 Bluesky 앱 사용하기](#using-the-gndr-app-with-your-pds)
 * [PDS 업데이트하기](#updating-your-pds)
 * [도움 받기](#getting-help)
 
@@ -88,13 +88,13 @@ DNS 제공업체의 제어판에서 도메인을 설정하고, 서버를 가리�
 SSH를 통해 서버에 접속한 후, 다음 명령어로 설치 스크립트를 다운로드하세요:
 
 ```bash
-wget https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh
+wget https://raw.githubusercontent.com/gander-social/pds/main/installer.sh
 ```
 
 또는 curl을 사용하여 다운로드하세요:
 
 ```bash
-curl https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh >installer.sh
+curl https://raw.githubusercontent.com/gander-social/pds/main/installer.sh >installer.sh
 ```
 
 그런 다음, bash를 사용하여 설치 프로그램을 실행합니다:
@@ -143,14 +143,14 @@ sudo pdsadmin create-invite-code
 
 앱을 통해 계정을 생성할 때 이 초대 코드를 입력하세요.
 
-<h2 id="using-the-bluesky-app-with-your-pds">PDS와 함께 Bluesky 앱 사용하기</h2>
+<h2 id="using-the-gndr-app-with-your-pds">PDS와 함께 Bluesky 앱 사용하기</h2>
 
 Bluesky 앱을 사용하여 PDS에 연결할 수 있습니다.
 
 1. Bluesky 앱 받기
-    * [웹용 Bluesky](https://bsky.app/)
-    * [iPhone용 Bluesky](https://apps.apple.com/us/app/bluesky-social/id6444370199)
-    * [Android용 Bluesky](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)
+    * [웹용 Bluesky](https://gndr.app/)
+    * [iPhone용 Bluesky](https://apps.apple.com/us/app/gander-social/id6444370199)
+    * [Android용 Bluesky](https://play.google.com/store/apps/details?id=xyz.gndrweb.app)
 2. 본인의 PDS URL 입력 (예: `https://example.com/`)
 
 _참고: 서브도메인 TLS 인증서는 요청 시 생성되므로, 계정 핸들이 활성화되기까지 10~30초 정도 걸릴 수 있습니다. 첫 게시물이나 프로필이 보이지 않는 경우, 30초 후에 다시 시도해보세요._
@@ -165,5 +165,5 @@ sudo pdsadmin update
 
 <h2 id="getting-help">도움 받기</h2>
 
-- [GitHub 방문하기](https://github.com/bluesky-social/pds) - 이슈 확인 및 토론 참여  
+- [GitHub 방문하기](https://github.com/gander-social/pds) - 이슈 확인 및 토론 참여
 - [AT Protocol PDS 관리자 Discord](https://discord.gg/e7hpHxRfBP) - 인스턴스를 운영하는 다른 사람들과 소통하고 PDS 배포에 대한 중요한 업데이트 받기

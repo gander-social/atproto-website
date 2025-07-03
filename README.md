@@ -2,10 +2,13 @@
 
 This repository contains the documentation for the AT Protocol, available to read at [atproto.com](https://atproto.com/).
 
-To read documentation for the Bluesky API, go to [docs.bsky.app](https://docs.bsky.app/) or this [repo](https://github.com/bluesky-social/bsky-docs).
+To read documentation for the gndr API, go to [docs.gndr.app](https://docs.gndr.app/) or this [repo](https://github.com/gander-social/gndr-docs).
 ---
 
 ### Making edits to atproto.com
+
+TODO: This entire repository should probably be rewritten for Gander, with references back to the Bluesky source. Noting this
+here for future follow up with the Gander dev team
 
 - clone this repo
 - run `npm install`
@@ -14,7 +17,7 @@ To read documentation for the Bluesky API, go to [docs.bsky.app](https://docs.bs
 
 ---
 
-[src/app/[locale]/en.mdx](https://github.com/bluesky-social/atproto-website/blob/main/src/app/[locale]/en.mdx) generates [http://localhost:3000](http://localhost:3000) -- start there if you'd like to make changes.
+[src/app/[locale]/en.mdx](https://github.com/gander-social/atproto-website/blob/main/src/app/[locale]/en.mdx) generates [http://localhost:3000](http://localhost:3000) -- start there if you'd like to make changes.
 
 The page auto-updates as you edit the file.
 

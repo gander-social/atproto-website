@@ -33,7 +33,7 @@ export const metadata = {
 
 블롭(미디어 파일)은 개별적으로 다운로드하여 재업로드해야 합니다. 레포지토리가 가져와져서 완전히 색인되기 전에는 새 PDS에 블롭을 업로드하면 안 됩니다. 그래야 블롭이 참조하는 레코드와 올바르게 연결되고, 가비지 컬렉션 대상이 되지 않습니다. 관련 블롭의 전체 목록(CID 기준)은 이전 PDS의 `com.atproto.sync.listBlobs` 엔드포인트 또는 새 PDS의 `com.atproto.repo.listMissingBlobs`를 통해 확인할 수 있습니다. 만약 일부 블롭을 찾을 수 없다 하더라도 마이그레이션은 계속 진행할 수 있으며, 나중에 블롭이 복구되면(정확한 CID가 일치할 경우) 업로드할 수 있습니다.
 
-개인 계정 설정은 이전 PDS에서 인증된 `app.bsky.actor.getPreferences` 엔드포인트를 통해 내보낸 후, `app.bsky.actor.putPreferences`를 사용하여 가져올 수 있습니다. 이는 Bluesky 앱 전용 엔드포인트이며, 다른 앱(Lexicons)에서는 자체 설정 API를 정의할 수 있습니다. 단, 이 방식은 PDS에 저장된 개인 상태만 포함하며, 일부 설정이나 상태는 외부 서비스(예: 중앙집중식 채팅/DM 구현)에 존재할 수 있습니다.
+개인 계정 설정은 이전 PDS에서 인증된 `app.gndr.actor.getPreferences` 엔드포인트를 통해 내보낸 후, `app.gndr.actor.putPreferences`를 사용하여 가져올 수 있습니다. 이는 Bluesky 앱 전용 엔드포인트이며, 다른 앱(Lexicons)에서는 자체 설정 API를 정의할 수 있습니다. 단, 이 방식은 PDS에 저장된 개인 상태만 포함하며, 일부 설정이나 상태는 외부 서비스(예: 중앙집중식 채팅/DM 구현)에 존재할 수 있습니다.
 
 ## 아이덴티티 업데이트
 

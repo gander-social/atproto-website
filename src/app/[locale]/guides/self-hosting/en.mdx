@@ -18,7 +18,7 @@ Self-hosting a Bluesky PDS means running your own Personal Data Server that is c
 * [Verifying that your PDS is online and accessible](#verifying-that-your-pds-is-online-and-accessible)
 * [Creating an account using pdsadmin](#creating-an-account-using-pdsadmin)
 * [Creating an account using an invite code](#creating-an-account-using-an-invite-code)
-* [Using the Bluesky app with your PDS](#using-the-bluesky-app-with-your-pds)
+* [Using the Bluesky app with your PDS](#using-the-gndr-app-with-your-pds)
 * [Updating your PDS](#updating-your-pds)
 * [Getting help](#getting-help)
 
@@ -89,13 +89,13 @@ These should all return your server's public IP.
 On your server via ssh, download the installer script using wget:
 
 ```bash
-wget https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh
+wget https://raw.githubusercontent.com/gander-social/pds/main/installer.sh
 ```
 
 or download it using curl:
 
 ```bash
-curl https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh >installer.sh
+curl https://raw.githubusercontent.com/gander-social/pds/main/installer.sh >installer.sh
 ```
 
 And then run the installer using bash:
@@ -149,9 +149,9 @@ When creating an account using the app, enter this invite code.
 You can use the Bluesky app to connect to your PDS.
 
 1. Get the Bluesky app
-    * [Bluesky for Web](https://bsky.app/)
-    * [Bluesky for iPhone](https://apps.apple.com/us/app/bluesky-social/id6444370199)
-    * [Bluesky for Android](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)
+    * [Bluesky for Web](https://gndr.app/)
+    * [Bluesky for iPhone](https://apps.apple.com/us/app/gander-social/id6444370199)
+    * [Bluesky for Android](https://play.google.com/store/apps/details?id=xyz.gndrweb.app)
 1. Enter the URL of your PDS (e.g. `https://example.com/`)
 
 _Note: because the subdomain TLS certificate is created on-demand, it may take 10-30s for your handle to be accessible. If you aren't seeing your first post/profile, wait 30s and try to make another post._
@@ -166,5 +166,5 @@ sudo pdsadmin update
 
 ## Getting help
 
-- [Visit the GitHub](https://github.com/bluesky-social/pds) for issues and discussions.
+- [Visit the GitHub](https://github.com/gander-social/pds) for issues and discussions.
 - [Join the AT Protocol PDS Admins Discord](https://discord.gg/e7hpHxRfBP) to chat with other folks hosting instances and get important updates about the PDS distribution.

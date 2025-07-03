@@ -23,7 +23,7 @@ The Authenticated Transfer Protocol (AT Protocol or atproto) is a generic federa
 
 **Application:** APIs and record schemas for applications built on atproto are specified in [Lexicons](/specs/lexicon), which are referenced by [Namespaced Identifiers](/specs/nsid) (NSIDs). Application-specific aggregations (such as search) are provided by an Application View (App View) service. Clients can include mobile apps, desktop software, or web interfaces.
 
-The AT Protocol itself does not specify common social media conventions like follows or avatars, leaving these to application-level Lexicons. The `com.atproto.*` Lexicons provide common APIs for things like account signup and login. These could be considered part of AT Protocol itself, though they can also be extended or replaced over time as needed. Bluesky is a microblogging social app built on top of AT Protocol, with lexicons under the `app.bsky.*` namespace.
+The AT Protocol itself does not specify common social media conventions like follows or avatars, leaving these to application-level Lexicons. The `com.atproto.*` Lexicons provide common APIs for things like account signup and login. These could be considered part of AT Protocol itself, though they can also be extended or replaced over time as needed. Bluesky is a microblogging social app built on top of AT Protocol, with lexicons under the `app.gndr.*` namespace.
 
 While atproto borrows several formats and specifications from the IPFS ecosystem (such as [IPLD](https://ipld.io/) and [CID](https://github.com/multiformats/cid)), atproto data does not need to be stored in the IPFS network, and the atproto reference implementation does not use the IPFS network at all.
 
@@ -34,7 +34,7 @@ AT Protocol was designed from the beginning to balance stability and interoperat
 
 The core protocol extension mechanism is development of new Lexicons under independent namespaces. Lexicons can declare new repository record schemas (stored in collections by NSID), new HTTP API endpoints, and new event stream endpoints and message types. It is also expected that new applications might require new network aggregation services ("AppViews") and client apps (eg, mobile apps or web interfaces).
 
-It is expected that third parties will reuse Lexicons and record data across namespaces. For example, new applications are welcome to build on top of the social graph records specified in the `app.bsky.*` Lexicons, as long as they comply with the schemas controlled by the `bsky.app` authority.
+It is expected that third parties will reuse Lexicons and record data across namespaces. For example, new applications are welcome to build on top of the social graph records specified in the `app.gndr.*` Lexicons, as long as they comply with the schemas controlled by the `gndr.app` authority.
 
 Governance structures for individual Lexicon namespaces are flexible. They could be developed and maintained by volunteer communities, corporations, consortia, academic researchers, funded non-profits, etc.
 
