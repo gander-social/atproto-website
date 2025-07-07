@@ -82,7 +82,7 @@ OAuth ([사양](https://github.com/gander-social/proposals/tree/main/0004-oauth)
 
 <Image alt="로그인 UI 스크린샷" src={AppLogin} />
 
-로그인 페이지는 사용자의 "핸들" (예: `alice..social` 또는 도메인 이름)을 입력받습니다.
+로그인 페이지는 사용자의 "핸들" (예: `alice.gndr.social` 또는 도메인 이름)을 입력받습니다.
 
 ```html
 <!-- src/pages/login.ts -->
@@ -90,7 +90,7 @@ OAuth ([사양](https://github.com/gander-social/proposals/tree/main/0004-oauth)
   <input
     type="text"
     name="handle"
-    placeholder="핸들 입력 (예: alice..social)"
+    placeholder="핸들 입력 (예: alice.gndr.social)"
     required
   />
   <button type="submit">로그인</button>
@@ -141,7 +141,7 @@ router.get(
 
 ## 3단계. 사용자 프로필 가져오기
 
-사용자에 대해 좀 더 알아볼까요? [](https://.app)에서는 사용자가 "프로필" 레코드를 게시하며, 다음과 같은 구조를 가집니다:
+사용자에 대해 좀 더 알아볼까요? [Gander](https://gndr.app)에서는 사용자가 "프로필" 레코드를 게시하며, 다음과 같은 구조를 가집니다:
 
 ```typescript
 interface ProfileRecord {
@@ -154,14 +154,14 @@ interface ProfileRecord {
 }
 ```
 
-이 레코드는 [atproto-browser.vercel.app](https://atproto-browser.vercel.app)에서 직접 확인할 수 있습니다. 예를 들어, [@.app의 프로필](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app..actor.profile/self)을 볼 수 있습니다.
+이 레코드는 [atproto-browser.vercel.app](https://atproto-browser.vercel.app)에서 직접 확인할 수 있습니다. 예를 들어, [@app.gndr.app의 프로필](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.gndr.actor.profile/self)을 볼 수 있습니다.
 
 사용자의 OAuth 세션과 연결된 [Agent](https://github.com/gander-social/atproto/tree/main/packages/api)를 사용해 이 레코드를 가져옵니다.
 
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid,                // 사용자 DID
-  collection: 'app..actor.profile', // 컬렉션 이름
+  collection: 'app.gndr.actor.profile', // 컬렉션 이름
   rkey: 'self',                         // 레코드 키
 })
 ```
@@ -193,7 +193,7 @@ router.get(
     // 로그인한 사용자의 추가 정보 가져오기
     const { data: profileRecord } = await agent.com.atproto.repo.getRecord({
       repo: agent.assertDid,                // 사용자 레포지토리
-      collection: 'app..actor.profile', //  프로필 레코드
+      collection: 'app.gndr.actor.profile', //  프로필 레코드
       rkey: 'self',                         // 레코드 키
     })
 
@@ -242,7 +242,7 @@ router.get(
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid,                // 사용자 DID
-  collection: 'app..actor.profile', // 컬렉션 이름
+  collection: 'app.gndr.actor.profile', // 컬렉션 이름
   rkey: 'self',                         // 레코드 키
 })
 ```
@@ -321,7 +321,7 @@ router.post(
 
 ## 5단계. 커스텀 "상태" 스키마 생성
 
-레포지토리의 컬렉션은 타입이 지정되어 있으며, 정해진 스키마를 따릅니다. `app..actor.profile` 타입 정의는 [여기](https://github.com/gander-social/atproto/blob/main/lexicons/app//actor/profile.json)에서 확인할 수 있습니다.
+레포지토리의 컬렉션은 타입이 지정되어 있으며, 정해진 스키마를 따릅니다. `app.gndr.actor.profile` 타입 정의는 [여기](https://github.com/gander-social/atproto/blob/main/lexicons/app/gndr/actor/profile.json)에서 확인할 수 있습니다.
 
 누구나 [Lexicon](https://atproto.com/guides/lexicon) 언어를 사용하여 새로운 스키마를 만들 수 있습니다. 이 예제 앱에서는 `xyz.statusphere`를 사용합니다 (statusphere.xyz를 위한 등록 도메인).
 
@@ -554,7 +554,7 @@ ${statuses.map((status, i) => {
         <div class="status">${status.status}</div>
       </div>
       <div class="desc">
-        <a class="author" href="https://.app/profile/${handle}">@${handle}</a>
+        <a class="author" href="https://gndr.app/profile/${handle}">@${handle}</a>
         님이 ${status.indexedAt}에 ${status.status} 상태를 게시했습니다.
       </div>
     </div>
@@ -636,7 +636,7 @@ router.post(
 
 <Image alt="정보 흐름 다이어그램" src={DiagramInfoFlow} />
 
-이와 같은 방식으로  소셜 앱을 포함한 모든 Atmosphere 애플리케이션이 동작합니다.
+이와 같은 방식으로 Gander 소셜 앱을 포함한 모든 Atmosphere 애플리케이션이 동작합니다.
 
 ## 다음 단계
 
@@ -644,7 +644,7 @@ router.post(
 
 - 모든 사용자의 프로필 레코드를 동기화하여 핸들 대신 표시 이름을 보여주기
 - 각 상태 이모지의 사용 횟수를 집계하여 총합 표시하기
-- 인증된 사용자의 `app..graph.follow` 정보를 가져와 팔로잉 상태 표시하기
+- 인증된 사용자의 `app.gndr.graph.follow` 정보를 가져와 팔로잉 상태 표시하기
 - 링크 게시 및 1~4성 평가와 같은 다른 스키마 생성하기
 
 <FooterCTA href="/" title="더 알아볼 준비가 되셨나요?" description="사양, 가이드 및 SDK를 확인해보세요." />

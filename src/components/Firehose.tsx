@@ -10,37 +10,37 @@ import { ArrowIcon } from './icons/ArrowIcon'
 const INIT_ACTIVITY = [
   {
     id: 6,
-    type: 'app..feed.like',
+    type: 'app.gndr.feed.like',
     handle: 'alice.com',
     date: '3s ago',
   },
   {
     id: 5,
-    type: 'app..feed.like',
+    type: 'app.gndr.feed.like',
     handle: 'carla.com',
     date: '4s ago',
   },
   {
     id: 4,
-    type: 'app..feed.post',
+    type: 'app.gndr.feed.post',
     handle: 'alice.com',
     date: '10s ago',
   },
   {
     id: 3,
-    type: 'app..feed.like',
+    type: 'app.gndr.feed.like',
     handle: 'bob.com',
     date: '11s ago',
   },
   {
     id: 2,
-    type: 'app..feed.repost',
+    type: 'app.gndr.feed.repost',
     handle: 'bob.com',
     date: '11s ago',
   },
   {
     id: 1,
-    type: 'app..feed.repost',
+    type: 'app.gndr.feed.repost',
     handle: 'bob.com',
     date: '11s ago',
   },
@@ -54,12 +54,12 @@ function genId() {
 function genType() {
   const rand = Math.random()
   if (rand < 0.5) {
-    return 'app..feed.like'
+    return 'app.gndr.feed.like'
   }
   if (rand < 0.8) {
-    return 'app..feed.repost'
+    return 'app.gndr.feed.repost'
   }
-  return 'app..feed.post'
+  return 'app.gndr.feed.post'
 }
 
 function genHandle() {

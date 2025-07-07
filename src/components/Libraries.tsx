@@ -33,7 +33,7 @@ const official: LibraryProp[] = [
     href: 'https://github.com/gander-social/atproto/tree/main/packages/api',
     name: 'Typescript',
     description:
-      'Created by  Social PBC. Works on Web, NodeJS, and React Native.',
+      'Maintained by Gander Social. Works on Web, NodeJS, and React Native.',
     logo: logoTs,
     status: {
       httpClient: 'full',
@@ -52,7 +52,7 @@ const official: LibraryProp[] = [
   {
     href: 'https://github.com/gander-social/indigo/tree/main',
     name: 'Go',
-    description: 'Created by Bluesky Social PBC.',
+    description: 'Maintained by Gander Social.',
     logo: logoGo,
     status: {
       httpClient: 'partial',

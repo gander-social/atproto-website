@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'Self-hosting',
   description:
-    'Self-hosting a  PDS means running your own Personal Data Server that is capable of federating with the wider ATProto network.',
+    'Self-hosting a Gander PDS means running your own Personal Data Server that is capable of federating with the wider ATProto network.',
 }
 
 export default async function HomePage({ params }: any) {

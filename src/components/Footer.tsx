@@ -69,6 +69,7 @@ function PageNavigation() {
   )
 }
 
+// TODO: Replace with Gander icon - this is still the bluesky svg
 function GanderIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 360 320" aria-hidden="true" {...props}>
@@ -122,7 +123,7 @@ function SmallPrint() {
       </p>
       <div className="flex gap-4">
         <SocialLink
-          href="https://.app/profile/atproto.com"
+          href="https://gndr.app/profile/atproto.com"
           icon={GanderIcon}
         >
           Follow us on Gander

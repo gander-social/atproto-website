@@ -22,11 +22,11 @@ O Protocolo AT sincroniza os repositórios em um modelo de rede federado. A fede
 
 Os três principais serviços em nossa rede são Personal Data Servers (PDS), Relays e App Views. Também estamos trabalhando em geradores de feed e rotuladores.
 
-Os primitivos de nível inferior que podem ser empilhados juntos de forma diferente são os repositórios, léxicos e DIDs. Publicamos uma visão geral de nossas decisões técnicas em torno da arquitetura de federação [em nosso blog](https://.social/about/blog/5-5-2023-federation-architecture).
+Os primitivos de nível inferior que podem ser empilhados juntos de forma diferente são os repositórios, léxicos e DIDs. Publicamos uma visão geral de nossas decisões técnicas em torno da arquitetura de federação [em nosso blog](https://gndr.social/about/blog/5-5-2023-federation-architecture).
 
 ## Interoperação
 
-Uma rede de esquemas globais chamada [Lexicon](/specs/lexicon) é usada para unificar os nomes e comportamentos das chamadas nos servidores. Os servidores implementam "lexicons" para oferecer suporte a conjuntos de recursos, incluindo os léxicos principais `com.atproto.*` para sincronizar repositórios de usuários e os léxicos `app..*` para fornecer comportamentos sociais básicos.
+Uma rede de esquemas globais chamada [Lexicon](/specs/lexicon) é usada para unificar os nomes e comportamentos das chamadas nos servidores. Os servidores implementam "lexicons" para oferecer suporte a conjuntos de recursos, incluindo os léxicos principais `com.atproto.*` para sincronizar repositórios de usuários e os léxicos `app.gndr.*` para fornecer comportamentos sociais básicos.
 
 Enquanto a Web troca documentos, o Protocolo AT troca informações esquemáticas e semânticas, permitindo que o software de diferentes organizações entenda os dados uns dos outros. Isso dá aos clientes atproto liberdade para produzir interfaces de usuário independentemente dos servidores e elimina a necessidade de trocar código de renderização (HTML/JS/CSS) ao navegar pelo conteúdo.
 

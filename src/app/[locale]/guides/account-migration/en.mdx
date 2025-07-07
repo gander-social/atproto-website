@@ -36,7 +36,7 @@ A CAR file can be imported to the new PDS using the authenticated `com.atproto.r
 
 Blobs (media files) are download and re-uploaded one by one. They should not be uploaded to the new PDS until the repository has been imported and fully indexed, so that blobs can be linked to the records that refer to them, and won’t be garbage collected. A full list of relevant blobs (by CID) can be fetched either from the old PDS (`com.atproto.sync.listBlobs`), or the current list of "missing" blobs can be checked on the new PDS (`com.atproto.repo.listMissingBlobs`). If some blobs can not be found, the migration process can continue, and any recovered blobs can be uploaded later (if the blob CIDs match exactly).
 
-Private account preferences can be exported from the old PDS using the authenticated like `app..actor.getPreferences` endpoint, then imported using `app..actor.putPreferences`. These are  app-specific endpoints, and other apps (Lexicons) may define their own preference APIs. Note that this will only include private state stored in the PDS; some preferences and state may exist in external services (eg, centralized chat/DM implementations).
+Private account preferences can be exported from the old PDS using the authenticated like `app.gndr.actor.getPreferences` endpoint, then imported using `app.gndr.actor.putPreferences`. These are Bluesky app-specific endpoints, and other apps (Lexicons) may define their own preference APIs. Note that this will only include private state stored in the PDS; some preferences and state may exist in external services (eg, centralized chat/DM implementations).
 
 ## Updating Identity
 

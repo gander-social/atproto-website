@@ -23,7 +23,7 @@ The Authenticated Transfer Protocol (AT Protocol or atproto) is a generic federa
 
 **Application:** APIs and record schemas for applications built on atproto are specified in [Lexicons](/specs/lexicon), which are referenced by [Namespaced Identifiers](/specs/nsid) (NSIDs). Application-specific aggregations (such as search) are provided by an Application View (App View) service. Clients can include mobile apps, desktop software, or web interfaces.
 
-The AT Protocol itself does not specify common social media conventions like follows or avatars, leaving these to application-level Lexicons. The `com.atproto.*` Lexicons provide common APIs for things like account signup and login. These could be considered part of AT Protocol itself, though they can also be extended or replaced over time as needed.  is a microblogging social app built on top of AT Protocol, with lexicons under the `app.gndr.*` namespace.
+The AT Protocol itself does not specify common social media conventions like follows or avatars, leaving these to application-level Lexicons. The `com.atproto.*` Lexicons provide common APIs for things like account signup and login. These could be considered part of AT Protocol itself, though they can also be extended or replaced over time as needed. Gander is a microblogging social app built on top of AT Protocol, with lexicons under the `app.gndr.*` namespace.
 
 While atproto borrows several formats and specifications from the IPFS ecosystem (such as [IPLD](https://ipld.io/) and [CID](https://github.com/multiformats/cid)), atproto data does not need to be stored in the IPFS network, and the atproto reference implementation does not use the IPFS network at all.
 
@@ -40,7 +40,7 @@ Governance structures for individual Lexicon namespaces are flexible. They could
 
 ## What Is Missing?
 
-These specifications cover most details as implemented in 's reference implementation. A few important pieces have not been finalized, both in that reference implementation and in these specifications.
+These specifications cover most details as implemented in Gander's reference implementation. A few important pieces have not been finalized, both in that reference implementation and in these specifications.
 
 **Moderation Primitives:** The `com.atproto.admin.*` routes for handling moderation reports and doing infrastructure-level take-downs is specified in Lexicons but should also be described in more detail.
 
