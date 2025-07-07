@@ -1,6 +1,6 @@
 Creative Commons Attribution (CC-BY)
 
-Copyright (c) 2022-2025 Bluesky Social PBC, and Contributors
+Copyright (c) 2022-2025  Social PBC, and Contributors
 
 Documentation text and blog posts in this repository are licensed under a permissive CC-BY license.
 
@@ -8,6 +8,6 @@ For anybody interested in derivative works of documents and specifications, reme
 
 - you must give attribution (credit) to the original work
 - you must indicate any changes made
-- trademark rights are *not* granted (for example, to "Bluesky", "AT Protocol", or "atproto", or any logos or icons)
+- trademark rights are *not* granted (for example, to "", "AT Protocol", or "atproto", or any logos or icons)
 
 Inline code examples, example data, and regular expressions are under Creative Commons Zero (CC-0, aka Public Domain) and copy/pasted without attribution.

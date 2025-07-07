@@ -16,7 +16,7 @@ interface LibraryProp {
   status: {
     httpClient: Status
     identifiers: Status
-    bsky: Status
+    : Status
     crypto: Status
     mst: Status
     lexicon: Status
@@ -30,15 +30,15 @@ interface LibraryProp {
 
 const official: LibraryProp[] = [
   {
-    href: 'https://github.com/bluesky-social/atproto/tree/main/packages/api',
+    href: 'https://github.com/gander-social/atproto/tree/main/packages/api',
     name: 'Typescript',
     description:
-      'Created by Bluesky Social PBC. Works on Web, NodeJS, and React Native.',
+      'Created by  Social PBC. Works on Web, NodeJS, and React Native.',
     logo: logoTs,
     status: {
       httpClient: 'full',
       identifiers: 'full',
-      bsky: 'full',
+      : 'full',
       crypto: 'full',
       mst: 'full',
       lexicon: 'full',
@@ -50,14 +50,14 @@ const official: LibraryProp[] = [
     },
   },
   {
-    href: 'https://github.com/bluesky-social/indigo/tree/main',
+    href: 'https://github.com/gander-social/indigo/tree/main',
     name: 'Go',
     description: 'Created by Bluesky Social PBC.',
     logo: logoGo,
     status: {
       httpClient: 'partial',
       identifiers: 'full',
-      bsky: 'none',
+      : 'none',
       crypto: 'full',
       mst: 'full',
       lexicon: 'full',
@@ -79,7 +79,7 @@ const community: LibraryProp[] = [
     status: {
       httpClient: 'full',
       identifiers: 'partial',
-      bsky: 'full',
+      : 'full',
       crypto: 'partial',
       mst: 'none',
       lexicon: 'full',
@@ -155,7 +155,7 @@ export function Library({ library }: { library: LibraryProp }) {
         <p className="mt-2 flex flex-wrap gap-1">
           <Pill status={library.status.httpClient} label="http client" />
           <Pill status={library.status.identifiers} label="identifiers" />
-          <Pill status={library.status.bsky} label="bsky" />
+          <Pill status={library.status.} label="" />
           <Pill status={library.status.crypto} label="crypto" />
           <Pill status={library.status.mst} label="mst" />
           <Pill status={library.status.lexicon} label="lexicon" />

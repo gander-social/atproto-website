@@ -78,8 +78,8 @@ Some examples, with the given ASCII strings mapping to byte arrays:
 
 - `2653ae71`: depth "0"
 - `blue`: depth "1"
-- `app.bsky.feed.post/454397e440ec`: depth "4"
-- `app.bsky.feed.post/9adeb165882c`: depth "8"
+- `app.gndr.feed.post/454397e440ec`: depth "4"
+- `app.gndr.feed.post/9adeb165882c`: depth "8"
 
 There are many MST nodes in repositories, so it is important that they have a compact binary representation, for storage efficiency. Within every node, keys (byte arrays) are compressed by eliding common prefixes, with each entry indicating how many bytes it shares with the previous key in the array. The first entry in the array for a given node must contain the full key, and a common prefix length of 0. This key compaction is internal to nodes, it does not extend across multiple nodes in the tree. The compaction scheme is mandatory, to ensure that the MST structure is deterministic across implementations.
 
@@ -128,7 +128,7 @@ The CARv1 specification is agnostic about the same block appearing multiple time
 ## Repository Diffs
 
 <Note>
-An updated version of the Synchronization protocol is being rolled out to the live network in early 2025. There is a ["Sync v1.1" proposal document](https://github.com/bluesky-social/proposals/tree/main/0006-sync-iteration) and an [update blog post](https://docs.bsky.app/blog/relay-sync-updates) with deployment details. The written specifications will be updated soon.
+An updated version of the Synchronization protocol is being rolled out to the live network in early 2025. There is a ["Sync v1.1" proposal document](https://github.com/gander-social/proposals/tree/main/0006-sync-iteration) and an [update blog post](https://docs.gndr.app/blog/relay-sync-updates) with deployment details. The written specifications will be updated soon.
 </Note>
 
 A concept which supports efficient synchronization of data between independent services is "diffs" of repository trees between different revisions. The basic principle is that a repository diff contains all the data (commit object, MST nodes, and records) that have changed between an older revision and the current revision of a repo. The diff can be "applied" to the older mirror of the repository, and the result will be the complete MST tree at the current (newer) commit revision.

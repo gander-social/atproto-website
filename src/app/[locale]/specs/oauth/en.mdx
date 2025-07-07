@@ -7,11 +7,11 @@ export const metadata = {
 # OAuth
 
 <Note>
-The OAuth profile for atproto is new and may be revised based on feedback from the development community and ongoing standards work. Read more about the rollout in the [OAuth Roadmap](https://github.com/bluesky-social/atproto/discussions/2656).
+The OAuth profile for atproto is new and may be revised based on feedback from the development community and ongoing standards work. Read more about the rollout in the [OAuth Roadmap](https://github.com/gander-social/atproto/discussions/2656).
 </Note>
 
 <Note>
-This specification is authoritative, but is not an implementation guide and does not provide much background or context around design decisions. The earlier [design proposal](https://github.com/bluesky-social/proposals/tree/main/0004-oauth) is not authoritative but provides more context and examples. SDK documentation and the [client implementation guide](https://docs.bsky.app/docs/advanced-guides/oauth-client) are more approachable for developers.
+This specification is authoritative, but is not an implementation guide and does not provide much background or context around design decisions. The earlier [design proposal](https://github.com/gander-social/proposals/tree/main/0004-oauth) is not authoritative but provides more context and examples. SDK documentation and the [client implementation guide](https://docs.gndr.app/docs/advanced-guides/oauth-client) are more approachable for developers.
 </Note>
 
 OAuth is the primary mechanism in atproto for clients to make authorized requests to PDS instances. Most user-facing software is expected to use OAuth, including "front-end" clients like mobile apps, rich browser apps, or native desktop apps, as well as "back-end" clients like web services.
@@ -181,10 +181,10 @@ The intention is to support flexible scopes based on Lexicon namespaces (NSIDs) 
     - API endpoints and service proxying for most Lexicon endpoints, to any service provider (identified by DID)
     - ability to generate service auth tokens for the specific API endpoints the client has access to
     - no account management actions: change handle, change email, delete or deactivate account, migrate account
-    - no access to DMs (the `chat.bsky.*` Lexicons), specifically
-- `transition:chat.bsky`: equivalent to adding the "DM Access" toggle for "App Passwords"
-    - API endpoints and service proxying for the `chat.bsky` Lexicons specifically
-    - ability to generate service auth tokens for the `chat.bsky` Lexicons
+    - no access to DMs (the `chat.gndr.*` Lexicons), specifically
+- `transition:chat.gndr`: equivalent to adding the "DM Access" toggle for "App Passwords"
+    - API endpoints and service proxying for the `chat.gndr` Lexicons specifically
+    - ability to generate service auth tokens for the `chat.gndr` Lexicons
     - this scope depends on and does not function without the  `transition:generic` scope
 - `transition:email`: access to the account email address
     - email address (and confirmation status) gets included in response to `com.atproto.server.getSession` endpoint

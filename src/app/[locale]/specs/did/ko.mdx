@@ -13,7 +13,7 @@ AT Protocol은 계정을 영구적이고 장기적으로 식별하기 위해 [�
 현재 atproto에서는 두 가지 DID 메서드를 지원합니다:
 
 - `did:web`: HTTPS(및 DNS)를 기반으로 한 W3C 표준입니다. 식별자 부분은 호스트네임입니다. atproto에서 `did:plc`와 독립적인 대안으로 사용하기 위해 지원됩니다. 이 메서드는 도메인 이름에 밀접하게 연결되어 있으며, 도메인 이름 제어권 상실에 따른 이전 또는 복구 메커니즘을 제공하지 않습니다. atproto의 문맥에서는 오직 호스트네임 수준의 `did:web`만 지원하며, 경로 기반 DID는 지원되지 않습니다. 핸들에 적용되는 최상위 도메인 제한(예: `.arpa` 불허)도 `did:web` 도메인에 동일하게 적용됩니다. 특별히 테스트 및 개발 환경에서는 `localhost` 호스트네임이 허용되며, 포트 번호(콜론으로 구분, 16진수로 인코딩)는 오직 `localhost`에 한해서만 허용됩니다.
-- `did:plc`: Bluesky에서 개발한 새로운 DID 메서드입니다. 자세한 내용은 [did-method-plc GitHub 저장소](https://github.com/did-method-plc/did-method-plc)를 참고하세요.
+- `did:plc`: 에서 개발한 새로운 DID 메서드입니다. 자세한 내용은 [did-method-plc GitHub 저장소](https://github.com/did-method-plc/did-method-plc)를 참고하세요.
 
 향후 소수의 추가 메서드가 지원될 수 있으나, 모든 DID 메서드 또는 다수의 메서드를 지원하는 것은 의도하지 않습니다. (보편적 해석기(universal resolver) 소프트웨어가 존재함에도 불구하고)
 
@@ -49,7 +49,7 @@ atproto에서 사용 가능한 올바른 DID (문법이 올바르고 지원되�
 
 ```
 did:plc:z72i7hdynmk6r22z27h6tvur
-did:web:blueskyweb.xyz
+did:web:ganderweb.xyz
 ```
 
 Lexicon 문법 검증에 통과하지만, 지원되지 않는 DID 메서드의 예:

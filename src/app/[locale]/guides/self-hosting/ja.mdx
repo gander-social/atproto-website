@@ -1,12 +1,12 @@
 export const metadata = {
 title: 'セルフホスティング',
 description:
-'Bluesky PDS をセルフホスティングするということは、より広範な ATProto ネットワークと連携できる独自のパーソナル データ サーバーを実行することを意味します。',
+' PDS をセルフホスティングするということは、より広範な ATProto ネットワークと連携できる独自のパーソナル データ サーバーを実行することを意味します。',
 }
 
 # セルフホスティング
 
-Bluesky PDS をセルフホスティングするということは、より広範な ATProto ネットワークと連携できる独自のパーソナル データ サーバーを実行することを意味します。 {{className: 'lead'}}
+ PDS をセルフホスティングするということは、より広範な ATProto ネットワークと連携できる独自のパーソナル データ サーバーを実行することを意味します。 {{className: 'lead'}}
 
 ## 目次
 
@@ -18,7 +18,7 @@ Bluesky PDS をセルフホスティングするということは、より広�
 * [PDS がオンラインでアクセス可能であることを確認する](#verifying-that-your-pds-is-online-and-accessible)
 * [pdsadmin を使用してアカウントを作成する](#creating-an-account-using-pdsadmin)
 * [招待コードを使用してアカウントを作成する](#creating-an-account-using-an-invite-code)
-* [PDS で Bluesky アプリを使用する](#using-the-bluesky-app-with-your-pds)
+* [PDS で  アプリを使用する](#using-the-gander-app-with-your-pds)
 * [PDS を更新する](#updating-your-pds)
 * [ヘルプを取得する](#getting-help)
 
@@ -89,13 +89,13 @@ DNS プロバイダーのコントロール パネルから、サーバーを指
 SSH 経由でサーバー上で、wget を使用してインストーラー スクリプトをダウンロードします:
 
 ```bash
-wget https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh
+wget https://raw.githubusercontent.com/gander-social/pds/main/installer.sh
 ```
 
 または curl を使用してダウンロードします:
 
 ```bash
-curl https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh >installer.sh
+curl https://raw.githubusercontent.com/gander-social/pds/main/installer.sh >installer.sh
 ```
 
 次に、bash を使用してインストーラーを実行します:
@@ -144,14 +144,14 @@ sudo pdsadmin create-invite-code
 
 アプリを使用してアカウントを作成するときは、この招待コードを入力します。
 
-<h2 id="using-the-bluesky-app-with-your-pds">PDS で Bluesky アプリを使用する</h2>
+<h2 id="using-the-gander-app-with-your-pds">PDS で  アプリを使用する</h2>
 
-Bluesky アプリを使用して PDS に接続できます。
+ アプリを使用して PDS に接続できます。
 
-1. Bluesky アプリを入手します
-* [Bluesky for Web](https://bsky.app/)
-* [iPhone 用 Bluesky](https://apps.apple.com/us/app/bluesky-social/id6444370199)
-* [Android 用 Bluesky](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)
+1.  アプリを入手します
+* [Gander for Web](https://.app/)
+* [iPhone 用 Gander](https://apps.apple.com/us/app/gander-social/id6444370199)
+* [Android 用 Gander](https://play.google.com/store/apps/details?id=xyz.ganderweb.app)
 1. PDS の URL を入力します (例: `https://example.com/`)
 
 _注: サブドメイン TLS 証明書はオンデマンドで作成されるため、ハンドルにアクセスできるようになるまでに 10 ～ 30 秒かかる場合があります。最初の投稿/プロフィールが表示されない場合は、30 秒待ってから別の投稿を行ってください。_
@@ -166,5 +166,5 @@ sudo pdsadmin update
 
 <h2 id="getting-help">ヘルプの取得</h2>
 
-- [GitHub](https://github.com/bluesky-social/pds) にアクセスして、問題やディスカッションを確認してください。
+- [GitHub](https://github.com/gander-social/pds) にアクセスして、問題やディスカッションを確認してください。
 - [AT Protocol PDS Admins Discord](https://discord.gg/e7hpHxRfBP) に参加して、インスタンスをホストしている他のユーザーとチャットし、PDS ディストリビューションに関する重要な更新情報を入手してください。

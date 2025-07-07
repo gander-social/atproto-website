@@ -20,7 +20,7 @@ description:
 
 # AT プロトコルでアプリケーションを構築するためのクイック スタート ガイド
 
-<Link href="https://github.com/bluesky-social/statusphere-example-app" className="not-prose flex items-center gap-2 bg-blue-100 dark:bg-blue-950 dark:text-white px-4 py-3 text-base rounded-lg hover:underline">
+<Link href="https://github.com/gander-social/statusphere-example-app" className="not-prose flex items-center gap-2 bg-blue-100 dark:bg-blue-950 dark:text-white px-4 py-3 text-base rounded-lg hover:underline">
   <svg viewBox="0 0 20 20" aria-hidden="true" className="h-6 dark:text-white">
     <path
       fill="currentColor"
@@ -54,7 +54,7 @@ Atmosphere のデータは、ユーザーの個人リポジトリに保存され
 私たちのアプリを Google のようなものだと考えてください。Google の仕事が、各 Web サイトの `/status.json` の下にどの絵文字があるかを伝えることだったとしたら、次のような表示になります。
 
 - `https://nytimes.com/status.json` によると、`nytimes.com` は 📰 気分です
-- `https://bsky.app/status.json` によると、`bsky.app` は 🦋 気分です
+- `https://.app/status.json` によると、`.app` は 🦋 気分です
 - `https://reddit.com/status.json` によると、`reddit.com` は 🤓 気分です
 
 Atmosphere も同様に動作しますが、`https://` ではなく `at://` をチェックします。各ユーザーには `at://` URL の下にデータ リポジトリがあります。Atmosphere 内のすべてのユーザー データ リポジトリをクロールして、すべての "status.json" レコードを取得し、それらを SQLite データベースに集約します。
@@ -66,7 +66,7 @@ Atmosphere も同様に動作しますが、`https://` ではなく `at://` を�
 まず、リポジトリをクローンしてパッケージをインストールします。
 
 ```bash
-git clone https://github.com/bluesky-social/statusphere-example-app.git
+git clone https://github.com/gander-social/statusphere-example-app.git
 cd statusphere-example-app
 cp .env.template .env
 npm install
@@ -89,7 +89,7 @@ npm run dev
 
 誰かがアプリにログインすると、その人の個人用 `at://` リポジトリへの読み取りおよび書き込みアクセス権が付与されます。これを使用して、ステータス json レコードを書き込みます。
 
-これを OAuth ([spec](https://github.com/bluesky-social/proposals/tree/main/0004-oauth)) を使用して実現します。 OAuth フローのほとんどは、[@atproto/oauth-client-node](https://github.com/bluesky-social/atproto/tree/main/packages/oauth/oauth-client-node) ライブラリを使用して処理されます。これが私たちが目指している構成です:
+これを OAuth ([spec](https://github.com/gander-social/proposals/tree/main/0004-oauth)) を使用して実現します。 OAuth フローのほとんどは、[@atproto/oauth-client-node](https://github.com/gander-social/atproto/tree/main/packages/oauth/oauth-client-node) ライブラリを使用して処理されます。これが私たちが目指している構成です:
 
 <Image alt="OAuth 要素の図" src={DiagramOauth} />
 
@@ -97,7 +97,7 @@ npm run dev
 
 <Image alt="ログイン UI のスクリーンショット" src={AppLogin} />
 
-ログイン ページでは、ユーザーに「ハンドル」を尋ねるだけです。これは、アカウントに関連付けられたドメイン名です。[Bluesky](https://bsky.app) ユーザーの場合、これらは `alice.bsky.social` のように見えますが、任意の種類のドメイン (例 `alice.com`) にすることができます。
+ログイン ページでは、ユーザーに「ハンドル」を尋ねるだけです。これは、アカウントに関連付けられたドメイン名です。[](https://.app) ユーザーの場合、これらは `alice..social` のように見えますが、任意の種類のドメイン (例 `alice.com`) にすることができます。
 
 ```html
 <!-- src/pages/login.ts -->
@@ -105,7 +105,7 @@ npm run dev
   <input
   type="text"
   name="handle"
-  placeholder="ハンドルを入力してください (例 alice.bsky.social)"
+  placeholder="ハンドルを入力してください (例 alice..social)"
   required
   />
   <button type="submit">ログイン</button>
@@ -158,7 +158,7 @@ router.get(
 
 ## ステップ 3. ユーザーのプロファイルを取得する
 
-ユーザーについて何か調べてみましょう。[Bluesky](https://bsky.app) では、ユーザーは次のような「プロファイル」レコードを公開します。
+ユーザーについて何か調べてみましょう。[](https://.app) では、ユーザーは次のような「プロファイル」レコードを公開します。
 
 ```typescript
 interface ProfileRecord {
@@ -171,14 +171,14 @@ interface ProfileRecord {
 }
 ```
 
-[atproto-browser.vercel.app](https://atproto-browser.vercel.app) を使用して、このレコードを直接調べることができます。たとえば、[これは @bsky.app のプロファイル レコードです](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.actor.profile/self)。
+[atproto-browser.vercel.app](https://atproto-browser.vercel.app) を使用して、このレコードを直接調べることができます。たとえば、[これは @.app のプロファイル レコードです](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app..actor.profile/self)。
 
-このレコードを取得するには、ユーザーの OAuth セッションに関連付けられた [エージェント](https://github.com/bluesky-social/atproto/tree/main/packages/api) を使用します。
+このレコードを取得するには、ユーザーの OAuth セッションに関連付けられた [エージェント](https://github.com/gander-social/atproto/tree/main/packages/api) を使用します。
 
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid, // ユーザー
-  collection: 'app.bsky.actor.profile', // コレクション
+  collection: 'app..actor.profile', // コレクション
   rkey: 'self', // レコード キー
 })
 ```
@@ -210,7 +210,7 @@ router.get(
     // ログインしたユーザーに関する追加情報を取得します
     const { data: profileRecord } = await agent.com.atproto.repo.getRecord({
       repo: agent.assertDid, // ユーザーのリポジトリ
-      collection: 'app.bsky.actor.profile', // bluesky プロフィール レコード タイプ
+      collection: 'app..actor.profile', // gander プロフィール レコード タイプ
       rkey: 'self', // レコードのキー
     })
 
@@ -259,7 +259,7 @@ router.get(
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid, // ユーザー
-  collection: 'app.bsky.actor.profile', // コレクション
+  collection: 'app..actor.profile', // コレクション
   rkey: 'self', // レコードkey
 })
 ```
@@ -340,7 +340,7 @@ router.post(
 
 ## ステップ 5. カスタムの「ステータス」スキーマの作成
 
-リポジトリ コレクションは型指定されており、スキーマが定義されています。`app.bsky.actor.profile` 型定義は [こちら](https://github.com/bluesky-social/atproto/blob/main/lexicons/app/bsky/actor/profile.json) にあります。
+リポジトリ コレクションは型指定されており、スキーマが定義されています。`app..actor.profile` 型定義は [こちら](https://github.com/gander-social/atproto/blob/main/lexicons/app//actor/profile.json) にあります。
 
 [JSON-Schema](http://json-schema.org/) に非常によく似た [Lexicon](https://atproto.com/specs/lexicon) 言語を使用して、誰でも新しいスキーマを作成できます。スキーマは、所有権を示す [逆 DNS ID](https://atproto.com/specs/nsid) を使用します。このデモ アプリでは、このプロジェクト専用に登録した `xyz.statusphere` (別名 statusphere.xyz) を使用します。
 
@@ -450,7 +450,7 @@ router.post(
 
 <Image alt="イベント ストリームの図" src={DiagramEventStream} />
 
-[リレー サービス](https://docs.bsky.app/docs/advanced-guides/federation-architecture#relay) を使用すると、ネットワーク内のすべてのユーザーにわたるこれらのイベントの集約されたファイアホースをリッスンできます。この場合、探しているのは有効な `xyz.statusphere.status` レコードです。
+[リレー サービス](https://docs..app/docs/advanced-guides/federation-architecture#relay) を使用すると、ネットワーク内のすべてのユーザーにわたるこれらのイベントの集約されたファイアホースをリッスンできます。この場合、探しているのは有効な `xyz.statusphere.status` レコードです。
 
 ```typescript
 /** src/ingester.ts **/
@@ -574,7 +574,7 @@ ${statuses.map((status, i) => {
         <div class="status">${status.status}</div>
       </div>
       <div class="desc">
-        <a class="author" href="https://bsky.app/profile/${handle}">@${handle}</a>
+        <a class="author" href="https://.app/profile/${handle}">@${handle}</a>
         は ${status.indexedAt} で ${status.status} を感じていました。
       </div>
     </div>
@@ -667,7 +667,7 @@ router.post(
 
 <Image alt="情報の流れの図" src={DiagramInfoFlow} />
 
-[Bluesky ソーシャル アプリ](https://bsky.app) を含む、Atmosphere のすべてのアプリはこのように動作します。
+[ ソーシャル アプリ](https://.app) を含む、Atmosphere のすべてのアプリはこのように動作します。
 
 ## 次のステップ
 
@@ -675,7 +675,7 @@ router.post(
 
 - すべてのユーザーのプロフィール レコードを同期して、ハンドルではなく表示名を表示できるようにします。
 - 使用された各ステータスの数をカウントし、合計数を表示します。
-- 認証されたユーザーの `app.bsky.graph.follow` フォローを取得し、それらのステータスを表示します。
+- 認証されたユーザーの `app..graph.follow` フォローを取得し、それらのステータスを表示します。
 - Web サイトへのリンクを投稿して 1 から 4 つ星で評価する方法など、別の種類のスキーマを作成します。
 
 <FooterCTA href="/" title="さらに学習する準備はできましたか?" description="仕様、ガイド、SDK はここにあります。" />

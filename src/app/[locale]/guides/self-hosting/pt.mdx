@@ -1,12 +1,12 @@
 export const metadata = {
   title: 'Auto-hospedagem',
   description:
-    'Auto-hospedar um Bluesky PDS significa executar seu próprio Servidor de Dados Pessoais, capaz de se federar com a rede ATProto mais ampla.',
+    'Auto-hospedar um  PDS significa executar seu próprio Servidor de Dados Pessoais, capaz de se federar com a rede ATProto mais ampla.',
 }
 
 # Auto-hospedagem
 
-Auto-hospedar um Bluesky PDS significa executar seu próprio Servidor de Dados Pessoais, capaz de se federar com a rede ATProto mais ampla. {{className: 'lead'}}
+Auto-hospedar um  PDS significa executar seu próprio Servidor de Dados Pessoais, capaz de se federar com a rede ATProto mais ampla. {{className: 'lead'}}
 
 ## Índice
 
@@ -18,7 +18,7 @@ Auto-hospedar um Bluesky PDS significa executar seu próprio Servidor de Dados P
 * [Verificando se seu PDS está online e acessível](#verifying-that-your-pds-is-online-and-accessible)
 * [Criando uma conta usando pdsadmin](#creating-an-account-using-pdsadmin)
 * [Criando uma conta usando um código de convite](#creating-an-account-using-an-invite-code)
-* [Usando o aplicativo Bluesky com seu PDS](#using-the-bluesky-app-with-your-pds)
+* [Usando o aplicativo  com seu PDS](#using-the-gander-app-with-your-pds)
 * [Atualizando seu PDS](#updating-your-pds)
 * [Obtendo ajuda](#getting-help)
 
@@ -88,13 +88,13 @@ Todos eles devem retornar o IP público do seu servidor.
 No seu servidor via ssh, baixe o script do instalador usando wget:
 
 ```bash
-wget https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh
+wget https://raw.githubusercontent.com/gander-social/pds/main/installer.sh
 ```
 
 ou baixe usando curl:
 
 ```bash
-curl https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh >installer.sh
+curl https://raw.githubusercontent.com/gander-social/pds/main/installer.sh >installer.sh
 ```
 
 E então execute o instalador usando bash:
@@ -142,14 +142,14 @@ sudo pdsadmin create-invite-code
 
 Ao criar uma conta usando o aplicativo, insira este código de convite.
 
-<h2 id="using-the-bluesky-app-with-your-pds">Usando o aplicativo Bluesky com seu PDS</h2>
+<h2 id="using-the-gander-app-with-your-pds">Usando o aplicativo  com seu PDS</h2>
 
-Você pode usar o aplicativo Bluesky para se conectar ao seu PDS.
+Você pode usar o aplicativo  para se conectar ao seu PDS.
 
-1. Obtenha o aplicativo Bluesky
-* [Bluesky para Web](https://bsky.app/)
-* [Bluesky para iPhone](https://apps.apple.com/us/app/bluesky-social/id6444370199)
-* [Bluesky para Android](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)
+1. Obtenha o aplicativo
+* [ para Web](https://.app/)
+* [ para iPhone](https://apps.apple.com/us/app/gander-social/id6444370199)
+* [ para Android](https://play.google.com/store/apps/details?id=xyz.ganderweb.app)
 1. Insira a URL do seu PDS (por exemplo, `https://example.com/`)
 
 _Observação: como o certificado TLS do subdomínio é criado sob demanda, pode levar de 10 a 30 segundos para que seu identificador fique acessível. Se você não estiver vendo sua primeira postagem/perfil, aguarde 30 segundos e tente fazer outra postagem._
@@ -164,5 +164,5 @@ sudo pdsadmin update
 
 <h2 id="getting-help">Obtendo ajuda</h2>
 
-- [Visite o GitHub](https://github.com/bluesky-social/pds) para problemas e discussões.
+- [Visite o GitHub](https://github.com/gander-social/pds) para problemas e discussões.
 - [Junte-se ao AT Protocol PDS Admins Discord](https://discord.gg/e7hpHxRfBP) para conversar com outras pessoas que hospedam instâncias e obter atualizações importantes sobre a distribuição do PDS.
