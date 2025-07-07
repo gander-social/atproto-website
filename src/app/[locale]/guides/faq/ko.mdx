@@ -6,7 +6,7 @@ export const metadata = {
 
 # FAQ
 
-AT Protocol (AT Proto)에 관한 자주 묻는 질문들입니다. Bluesky에 관한 FAQ는 [여기](https://bsky.social/about/faq)에서 확인하실 수 있습니다.
+AT Protocol (AT Proto)에 관한 자주 묻는 질문들입니다. 에 관한 FAQ는 [여기](https://gndr.social/about/faq)에서 확인하실 수 있습니다.
 
 ## AT Protocol은 블록체인인가요?
 
@@ -41,7 +41,7 @@ XRPC는 [Lexicon](/guides/lexicon)을 사용하여 HTTP 호출을 설명하고 �
 ```typescript
 await api.com.atproto.repo.listRecords({
   user: 'alice.com',
-  collection: 'app.bsky.feed.post'
+  collection: 'app.gndr.feed.post'
 })
 ```
 
@@ -50,7 +50,7 @@ await api.com.atproto.repo.listRecords({
 ```text
 GET /xrpc/com.atproto.repo.listRecords
   ?user=alice.com
-  &collection=app.bsky.feed.post
+  &collection=app.gndr.feed.post
 ```
 
 Lexicon은 공유된 메소드 ID(`com.atproto.repo.listRecords`)와 예상되는 쿼리 파라미터, 입력 본문, 출력 본문을 설정합니다. Lexicon을 사용함으로써 호출의 입력과 출력에 대한 런타임 검사를 수행하고, 위와 같은 API 호출 예제와 같은 형식의 타입이 지정된 코드를 생성할 수 있습니다.

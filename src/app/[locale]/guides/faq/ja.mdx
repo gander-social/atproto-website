@@ -6,7 +6,7 @@ description:
 
 # FAQ
 
-認証転送プロトコル (AT Proto) に関するよくある質問。Bluesky に関するよくある質問については、[こちら](https://bsky.social/about/faq) をご覧ください。
+認証転送プロトコル (AT Proto) に関するよくある質問。 に関するよくある質問については、[こちら](https://gndr.social/about/faq) をご覧ください。
 
 ## AT プロトコルはブロックチェーンですか?
 
@@ -41,7 +41,7 @@ XRPC は [Lexicon](/guides/lexicon) を使用して HTTP 呼び出しを記述�
 ```typescript
 await api.com.atproto.repo.listRecords({
   user: 'alice.com',
-  collection: 'app.bsky.feed.post'
+  collection: 'app.gndr.feed.post'
 })
 ```
 
@@ -50,7 +50,7 @@ await api.com.atproto.repo.listRecords({
 ```text
 GET /xrpc/com.atproto.repo.listRecords
   ?user=alice.com
-  &collection=app.bsky.feed.post
+  &collection=app.gndr.feed.post
 ```
 
 Lexicon は、共有メソッド ID (`com.atproto.repo.listRecords`) と、予想されるクエリ パラメータ、入力本文、および出力本文を確立します。Lexicon を使用すると、呼び出しの入力と出力のランタイム チェックが実行され、上記の API 呼び出しの例のような型付きコードを生成できます。

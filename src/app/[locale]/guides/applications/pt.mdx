@@ -19,7 +19,7 @@ export const metadata = {
 
 # Guia de início rápido para criar aplicativos no protocolo AT
 
-<Link href="https://github.com/bluesky-social/statusphere-example-app" className="not-prose flex items-center gap-2 bg-blue-100 dark:bg-blue-950 dark:text-white px-4 py-3 text-base rounded-lg hover:underline">
+<Link href="https://github.com/gander-social/statusphere-example-app" className="not-prose flex items-center gap-2 bg-blue-100 dark:bg-blue-950 dark:text-white px-4 py-3 text-base rounded-lg hover:underline">
   <svg viewBox="0 0 20 20" aria-hidden="true" className="h-6 dark:text-white">
     <path
       fill="currentColor"
@@ -53,7 +53,7 @@ Os dados no Atmosphere são armazenados nos repositórios pessoais dos usuários
 Pense em nosso aplicativo como um Google. Se o trabalho do Google fosse dizer qual emoji cada site tinha em `/status.json`, então ele mostraria algo como:
 
 - `nytimes.com` está se sentindo 📰 de acordo com `https://nytimes.com/status.json`
-- `bsky.app` está se sentindo 🦋 de acordo com `https://bsky.app/status.json`
+- `.app` está se sentindo 🦋 de acordo com `https://gndr.app/status.json`
 - `reddit.com` está se sentindo 🤓 de acordo com `https://reddit.com/status.json`
 
 O Atmosphere funciona da mesma forma, exceto que vamos verificar `at://` em vez de `https://`. Cada usuário tem um repositório de dados sob uma URL `at://`. Vamos rastrear todos os repositórios de dados do usuário no Atmosphere para todos os registros "status.json" e agregá-los em nosso banco de dados SQLite.
@@ -65,7 +65,7 @@ O Atmosphere funciona da mesma forma, exceto que vamos verificar `at://` em vez 
 Comece clonando o repositório e instalando os pacotes.
 
 ```bash
-git clone https://github.com/bluesky-social/statusphere-example-app.git
+git clone https://github.com/gander-social/statusphere-example-app.git
 cd statusphere-example-app
 cp .env.template .env
 npm install
@@ -88,7 +88,7 @@ A cada passo, explicaremos como nosso aplicativo da Web acessa o Atmosphere. Con
 
 Quando alguém faz login em nosso aplicativo, ele nos dará acesso de leitura e gravação ao seu repositório pessoal `at://`. Usaremos isso para gravar o registro json de status.
 
-Faremos isso usando OAuth ([spec](https://github.com/bluesky-social/proposals/tree/main/0004-oauth)). A maioria dos fluxos OAuth será manipulada para nós usando a biblioteca [@atproto/oauth-client-node](https://github.com/bluesky-social/atproto/tree/main/packages/oauth/oauth-client-node). Este é o arranjo que estamos buscando:
+Faremos isso usando OAuth ([spec](https://github.com/gander-social/proposals/tree/main/0004-oauth)). A maioria dos fluxos OAuth será manipulada para nós usando a biblioteca [@atproto/oauth-client-node](https://github.com/gander-social/atproto/tree/main/packages/oauth/oauth-client-node). Este é o arranjo que estamos buscando:
 
 <Image alt="Um diagrama dos elementos OAuth" src={DiagramOauth} />
 
@@ -96,7 +96,7 @@ Quando o usuário faz login, o cliente OAuth criará uma nova sessão com seu se
 
 <Image alt="Uma captura de tela da IU de login" src={AppLogin} />
 
-Nossa página de login apenas pede ao usuário seu "handle", que é o nome de domínio associado à sua conta. Para usuários do [Bluesky](https://bsky.app), eles tendem a se parecer com `alice.bsky.social`, mas podem ser qualquer tipo de domínio (por exemplo, `alice.com`).
+Nossa página de login apenas pede ao usuário seu "handle", que é o nome de domínio associado à sua conta. Para usuários do [](https://gndr.app), eles tendem a se parecer com `alice.gndr.social`, mas podem ser qualquer tipo de domínio (por exemplo, `alice.com`).
 
 ```html
 <!-- src/pages/login.ts -->
@@ -104,7 +104,7 @@ Nossa página de login apenas pede ao usuário seu "handle", que é o nome de do
   <input
     type="text"
     name="handle"
-    placeholder="Enter your handle (eg alice.bsky.social)"
+    placeholder="Enter your handle (eg alice.gndr.social)"
     required
   />
   <button type="submit">Log in</button>
@@ -157,7 +157,7 @@ Com isso, estamos no negócio! Agora temos uma sessão com o servidor de reposit
 
 ## Etapa 3. Obtendo o perfil do usuário
 
-Por que não aprendemos algo sobre nosso usuário? Em [Bluesky](https://bsky.app), os usuários publicam um registro de "perfil" que se parece com isso:
+Por que não aprendemos algo sobre nosso usuário? Em [Gander](https://gndr.app), os usuários publicam um registro de "perfil" que se parece com isso:
 
 ```typescript
 interface ProfileRecord {
@@ -170,14 +170,14 @@ interface ProfileRecord {
 }
 ```
 
-Você pode examinar esse registro diretamente usando [atproto-browser.vercel.app](https://atproto-browser.vercel.app). Por exemplo, [este é o registro de perfil para @bsky.app](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.actor.profile/self).
+Você pode examinar esse registro diretamente usando [atproto-browser.vercel.app](https://atproto-browser.vercel.app). Por exemplo, [este é o registro de perfil para @gndr.app](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.gndr.actor.profile/self).
 
-Usaremos o [Agent](https://github.com/bluesky-social/atproto/tree/main/packages/api) associado à sessão OAuth do usuário para buscar esse registro.
+Usaremos o [Agent](https://github.com/gander-social/atproto/tree/main/packages/api) associado à sessão OAuth do usuário para buscar esse registro.
 
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid,                // The user
-  collection: 'app.bsky.actor.profile', // The collection
+  collection: 'app.gndr.actor.profile', // The collection
   rkey: 'self',                         // The record key
 })
 ```
@@ -209,7 +209,7 @@ router.get(
     // Fetch additional information about the logged-in user
     const { data: profileRecord } = await agent.com.atproto.repo.getRecord({
       repo: agent.assertDid,                // our user's repo
-      collection: 'app.bsky.actor.profile', // the bluesky profile record type
+      collection: 'app.gndr.actor.profile', // the gander profile record type
       rkey: 'self',                         // the record's key
     })
 
@@ -258,7 +258,7 @@ Vamos olhar novamente como lemos o registro "profile":
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid,                // The user
-  collection: 'app.bsky.actor.profile', // The collection
+  collection: 'app.gndr.actor.profile', // The collection
   rkey: 'self',                         // The record key
 })
 ```
@@ -339,7 +339,7 @@ E aqui estamos!
 
 ## Etapa 5. Criando um esquema de "status" personalizado
 
-As coleções de repositórios são tipadas, o que significa que elas têm um esquema definido. A definição do tipo `app.bsky.actor.profile` [pode ser encontrada aqui](https://github.com/bluesky-social/atproto/blob/main/lexicons/app/bsky/actor/profile.json).
+As coleções de repositórios são tipadas, o que significa que elas têm um esquema definido. A definição do tipo `app.gndr.actor.profile` [pode ser encontrada aqui](https://github.com/gander-social/atproto/blob/main/lexicons/app/gndr/actor/profile.json).
 
 Qualquer pessoa pode criar um novo esquema usando a linguagem [Lexicon](https://atproto.com/specs/lexicon), que é muito semelhante ao [JSON-Schema](http://json-schema.org/). Os esquemas usam [IDs de DNS reverso](https://atproto.com/specs/nsid) que indicam propriedade. Neste aplicativo de demonstração, usaremos `xyz.statusphere` que registramos especificamente para este projeto (também conhecido como statusphere.xyz).
 
@@ -449,7 +449,7 @@ Lembra como nos referimos ao nosso aplicativo como sendo como o Google, rastrean
 
 <Image alt="Um diagrama do fluxo de eventos" src={DiagramEventStream} />
 
-Usando um [serviço de retransmissão](https://docs.bsky.app/docs/advanced-guides/federation-architecture#relay) podemos ouvir um firehose agregado desses eventos em todos os usuários na rede. No nosso caso, o que estamos procurando são registros `xyz.statusphere.status` válidos.
+Usando um [serviço de retransmissão](https://docs.gndrapp/docs/advanced-guides/federation-architecture#relay) podemos ouvir um firehose agregado desses eventos em todos os usuários na rede. No nosso caso, o que estamos procurando são registros `xyz.statusphere.status` válidos.
 
 ```typescript
 /** src/ingester.ts **/
@@ -573,7 +573,7 @@ ${statuses.map((status, i) => {
         <div class="status">${status.status}</div>
       </div>
       <div class="desc">
-        <a class="author" href="https://bsky.app/profile/${handle}">@${handle}</a>
+        <a class="author" href="https://gndr.app/profile/${handle}">@${handle}</a>
         was feeling ${status.status} on ${status.indexedAt}.
       </div>
     </div>
@@ -663,7 +663,7 @@ Lembre-se deste fluxo de informações por toda parte:
 
 <Image alt="Um diagrama do fluxo de informações" src={DiagramInfoFlow} />
 
-É assim que todos os aplicativos no Atmosphere funcionam, incluindo o [aplicativo social Bluesky](https://bsky.app).
+É assim que todos os aplicativos no Atmosphere funcionam, incluindo o [aplicativo social Gander](https://gndr.app).
 
 ## Próximos passos
 
@@ -671,7 +671,7 @@ Se quiser praticar o que aprendeu, aqui estão alguns desafios adicionais que vo
 
 - Sincronize os registros de perfil de todos os usuários para que você possa mostrar seus nomes de exibição em vez de seus identificadores.
 - Conte o número de cada status usado e exiba as contagens totais.
-- Busque os seguidores `app.bsky.graph.follow` do usuário autenticado e mostre os status deles.
+- Busque os seguidores `app.gndr.graph.follow` do usuário autenticado e mostre os status deles.
 - Crie um tipo diferente de esquema, como uma maneira de postar links para sites e classificá-los de 1 a 4 estrelas.
 
 <FooterCTA href="/" title="Pronto para saber mais?" description="Especificações, guias e SDKs podem ser encontrados aqui." />

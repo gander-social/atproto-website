@@ -13,17 +13,17 @@ Os esquemas são identificados usando [NSIDs](/specs/nsid) que são um formato D
 ```typescript
 com.atproto.repo.getRecord()
 com.atproto.identity.resolveHandle()
-app.bsky.feed.getPostThread()
-app.bsky.notification.listNotifications()
+app.gndr.feed.getPostThread()
+app.gndr.notification.listNotifications()
 ```
 
 E aqui estão alguns exemplos de tipos de registro:
 
 ```typescript
-app.bsky.feed.post
-app.bsky.feed.like
-app.bsky.actor.profile
-app.bsky.graph.follow
+app.gndr.feed.post
+app.gndr.feed.like
+app.gndr.actor.profile
+app.gndr.graph.follow
 ```
 
 Os tipos de esquema, linguagem de definição e restrições de validação são descritos na [especificação Lexicon](/specs/lexicon), e representações em JSON e CBOR são descritas na [especificação do Modelo de Dados](/specs/data-model).

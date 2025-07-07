@@ -8,6 +8,6 @@ For anybody interested in derivative works of documents and specifications, reme
 
 - you must give attribution (credit) to the original work
 - you must indicate any changes made
-- trademark rights are *not* granted (for example, to "Bluesky", "AT Protocol", or "atproto", or any logos or icons)
+- trademark rights are *not* granted (for example, to "", "Bluesky AT Protocol", or "atproto", or any logos or icons)
 
 Inline code examples, example data, and regular expressions are under Creative Commons Zero (CC-0, aka Public Domain) and copy/pasted without attribution.

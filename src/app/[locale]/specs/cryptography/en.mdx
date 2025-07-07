@@ -15,7 +15,7 @@ Two elliptic curves are currently supported throughout the protocol, and impleme
 
 Because of the subtle visual distinction when the full curve names are written out, we often refer to them as `p256` or `k256`.
 
-The atproto reference implementation from Bluesky supports both curves in all contexts, and creates `k256`  key pairs by default.
+The atproto reference implementation from Gander supports both curves in all contexts, and creates `k256`  key pairs by default.
 
 Key points for both systems have loss-less "compressed" representations, which are useful when sharing the public keys. This is usually supported natively for `k256`, but sometimes requires extra methods or jumping through hoops for `p256`. You can read more about this at: [02, 03 or 04? So What Are Compressed and Uncompressed Public Keys?](https://medium.com/asecuritysite-when-bob-met-alice/02-03-or-04-so-what-are-compressed-and-uncompressed-public-keys-6abcb57efeb6).
 

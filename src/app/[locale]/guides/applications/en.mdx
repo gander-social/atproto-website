@@ -19,7 +19,7 @@ export const metadata = {
 
 # Quick start guide to building applications on AT Protocol
 
-<Link href="https://github.com/bluesky-social/statusphere-example-app" className="not-prose flex items-center gap-2 bg-blue-100 dark:bg-blue-950 dark:text-white px-4 py-3 text-base rounded-lg hover:underline">
+<Link href="https://github.com/gander-social/statusphere-example-app" className="not-prose flex items-center gap-2 bg-blue-100 dark:bg-blue-950 dark:text-white px-4 py-3 text-base rounded-lg hover:underline">
   <svg viewBox="0 0 20 20" aria-hidden="true" className="h-6 dark:text-white">
     <path
       fill="currentColor"
@@ -53,7 +53,7 @@ Data in the Atmosphere is stored on users' personal repos. It's almost like each
 Think of our app like a Google. If Google's job was to say which emoji each website had under `/status.json`, then it would show something like:
 
 - `nytimes.com` is feeling 📰 according to `https://nytimes.com/status.json`
-- `bsky.app` is feeling 🦋 according to `https://bsky.app/status.json`
+- `.app` is feeling 🦋 according to `https://gndr.app/status.json`
 - `reddit.com` is feeling 🤓 according to `https://reddit.com/status.json`
 
 The Atmosphere works the same way, except we're going to check `at://` instead of `https://`. Each user has a data repo under an `at://` URL. We'll crawl all the user data repos in the Atmosphere for all the  "status.json" records and aggregate them into our SQLite database.
@@ -65,7 +65,7 @@ The Atmosphere works the same way, except we're going to check `at://` instead o
 Start by cloning the repo and installing packages.
 
 ```bash
-git clone https://github.com/bluesky-social/statusphere-example-app.git
+git clone https://github.com/gander-social/statusphere-example-app.git
 cd statusphere-example-app
 cp .env.template .env
 npm install
@@ -88,7 +88,7 @@ With each step we'll explain how our Web app taps into the Atmosphere. Refer to 
 
 When somebody logs into our app, they'll give us read & write access to their personal `at://` repo. We'll use that to write the status json record.
 
-We're going to accomplish this using OAuth ([spec](https://github.com/bluesky-social/proposals/tree/main/0004-oauth)). Most of the OAuth flows are going to be handled for us using the [@atproto/oauth-client-node](https://github.com/bluesky-social/atproto/tree/main/packages/oauth/oauth-client-node) library. This is the arrangement we're aiming toward:
+We're going to accomplish this using OAuth ([spec](https://github.com/gander-social/proposals/tree/main/0004-oauth)). Most of the OAuth flows are going to be handled for us using the [@atproto/oauth-client-node](https://github.com/gander-social/atproto/tree/main/packages/oauth/oauth-client-node) library. This is the arrangement we're aiming toward:
 
 <Image alt="A diagram of the OAuth elements" src={DiagramOauth} />
 
@@ -96,7 +96,7 @@ When the user logs in, the OAuth client will create a new session with their rep
 
 <Image alt="A screenshot of the login UI" src={AppLogin} />
 
-Our login page just asks the user for their "handle," which is the domain name associated with their account. For [Bluesky](https://bsky.app) users, these tend to look like `alice.bsky.social`, but they can be any kind of domain (eg `alice.com`).
+Our login page just asks the user for their "handle," which is the domain name associated with their account. For [](https://gndr.app) users, these tend to look like `alice..social`, but they can be any kind of domain (eg `alice.com`).
 
 ```html
 <!-- src/pages/login.ts -->
@@ -104,7 +104,7 @@ Our login page just asks the user for their "handle," which is the domain name a
   <input
     type="text"
     name="handle"
-    placeholder="Enter your handle (eg alice.bsky.social)"
+    placeholder="Enter your handle (eg alice.gndr.social)"
     required
   />
   <button type="submit">Log in</button>
@@ -157,7 +157,7 @@ With that, we're in business! We now have a session with the user's repo server 
 
 ## Step 3. Fetching the user's profile
 
-Why don't we learn something about our user? In [Bluesky](https://bsky.app), users publish a "profile" record which looks like this:
+Why don't we learn something about our user? In [](https://gndr.app), users publish a "profile" record which looks like this:
 
 ```typescript
 interface ProfileRecord {
@@ -170,14 +170,14 @@ interface ProfileRecord {
 }
 ```
 
-You can examine this record directly using [atproto-browser.vercel.app](https://atproto-browser.vercel.app). For instance, [this is the profile record for @bsky.app](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.actor.profile/self).
+You can examine this record directly using [atproto-browser.vercel.app](https://atproto-browser.vercel.app). For instance, [this is the profile record for @gndr.app](https://atproto-browser.vercel.app/at?u=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.gndr.actor.profile/self).
 
-We're going to use the [Agent](https://github.com/bluesky-social/atproto/tree/main/packages/api) associated with the user's OAuth session to fetch this record.
+We're going to use the [Agent](https://github.com/gander-social/atproto/tree/main/packages/api) associated with the user's OAuth session to fetch this record.
 
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid,                // The user
-  collection: 'app.bsky.actor.profile', // The collection
+  collection: 'app.gndr.actor.profile', // The collection
   rkey: 'self',                         // The record key
 })
 ```
@@ -209,7 +209,7 @@ router.get(
     // Fetch additional information about the logged-in user
     const { data: profileRecord } = await agent.com.atproto.repo.getRecord({
       repo: agent.assertDid,                // our user's repo
-      collection: 'app.bsky.actor.profile', // the bluesky profile record type
+      collection: 'app.gndr.actor.profile', // the gander profile record type
       rkey: 'self',                         // the record's key
     })
 
@@ -258,7 +258,7 @@ Let's look again at how we read the "profile" record:
 ```typescript
 await agent.com.atproto.repo.getRecord({
   repo: agent.assertDid,                // The user
-  collection: 'app.bsky.actor.profile', // The collection
+  collection: 'app.gndr.actor.profile', // The collection
   rkey: 'self',                         // The record key
 })
 ```
@@ -339,7 +339,7 @@ And here we are!
 
 ## Step 5. Creating a custom "status" schema
 
-Repo collections are typed, meaning that they have a defined schema. The `app.bsky.actor.profile` type definition [can be found here](https://github.com/bluesky-social/atproto/blob/main/lexicons/app/bsky/actor/profile.json).
+Repo collections are typed, meaning that they have a defined schema. The `app.gndr.actor.profile` type definition [can be found here](https://github.com/gander-social/atproto/blob/main/lexicons/app/gndr/actor/profile.json).
 
 Anybody can create a new schema using the [Lexicon](https://atproto.com/specs/lexicon) language, which is very similar to [JSON-Schema](http://json-schema.org/). The schemas use [reverse-DNS IDs](https://atproto.com/specs/nsid) which indicate ownership. In this demo app we're going to use `xyz.statusphere` which we registered specifically for this project (aka statusphere.xyz).
 
@@ -449,7 +449,7 @@ Remember how we referred to our app as being like Google, crawling around the re
 
 <Image alt="A diagram of the event stream" src={DiagramEventStream} />
 
-Using a [Relay service](https://docs.bsky.app/docs/advanced-guides/federation-architecture#relay) we can listen to an aggregated firehose of these events across all users in the network. In our case what we're looking for are valid `xyz.statusphere.status` records.
+Using a [Relay service](https://docs.gndr.app/docs/advanced-guides/federation-architecture#relay) we can listen to an aggregated firehose of these events across all users in the network. In our case what we're looking for are valid `xyz.statusphere.status` records.
 
 ```typescript
 /** src/ingester.ts **/
@@ -573,7 +573,7 @@ ${statuses.map((status, i) => {
         <div class="status">${status.status}</div>
       </div>
       <div class="desc">
-        <a class="author" href="https://bsky.app/profile/${handle}">@${handle}</a>
+        <a class="author" href="https://gndr.app/profile/${handle}">@${handle}</a>
         was feeling ${status.status} on ${status.indexedAt}.
       </div>
     </div>
@@ -663,7 +663,7 @@ Remember this flow of information throughout:
 
 <Image alt="A diagram of the flow of information" src={DiagramInfoFlow} />
 
-This is how every app in the Atmosphere works, including the [Bluesky social app](https://bsky.app).
+This is how every app in the Atmosphere works, including the [ social app](https://gndr.app).
 
 ## Next steps
 
@@ -671,7 +671,7 @@ If you want to practice what you've learned, here are some additional challenges
 
 - Sync the profile records of all users so that you can show their display names instead of their handles.
 - Count the number of each status used and display the total counts.
-- Fetch the authed user's `app.bsky.graph.follow` follows and show statuses from them.
+- Fetch the authed user's `app.gndr.graph.follow` follows and show statuses from them.
 - Create a different kind of schema, like a way to post links to websites and rate them 1 through 4 stars.
 
 <FooterCTA href="/" title="Ready to learn more?" description="Specs, guides, and SDKs can be found here." />

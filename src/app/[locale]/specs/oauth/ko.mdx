@@ -7,11 +7,11 @@ export const metadata = {
 # OAuth
 
 <Note>
-atproto를 위한 OAuth 프로파일은 새로 도입되었으며, 개발 커뮤니티의 피드백과 진행 중인 표준 작업에 따라 수정될 수 있습니다. 자세한 내용은 [OAuth 로드맵](https://github.com/bluesky-social/atproto/discussions/2656)을 참조하세요.
+atproto를 위한 OAuth 프로파일은 새로 도입되었으며, 개발 커뮤니티의 피드백과 진행 중인 표준 작업에 따라 수정될 수 있습니다. 자세한 내용은 [OAuth 로드맵](https://github.com/gander-social/atproto/discussions/2656)을 참조하세요.
 </Note>
 
 <Note>
-이 명세는 권위 있는 표준이지만 구현 가이드는 아니며, 설계 결정의 배경이나 맥락에 대한 설명은 많지 않습니다. 초기 [설계 제안](https://github.com/bluesky-social/proposals/tree/main/0004-oauth)은 권위 있는 문서는 아니지만 보다 많은 배경과 예시를 제공합니다. 개발자에게는 SDK 문서나 [OAuth 클라이언트 구현 가이드](https://docs.bsky.app/docs/advanced-guides/oauth-client)가 더 이해하기 쉬울 수 있습니다.
+이 명세는 권위 있는 표준이지만 구현 가이드는 아니며, 설계 결정의 배경이나 맥락에 대한 설명은 많지 않습니다. 초기 [설계 제안](https://github.com/gander-social/proposals/tree/main/0004-oauth)은 권위 있는 문서는 아니지만 보다 많은 배경과 예시를 제공합니다. 개발자에게는 SDK 문서나 [OAuth 클라이언트 구현 가이드](https://docs.gndr.app/docs/advanced-guides/oauth-client)가 더 이해하기 쉬울 수 있습니다.
 </Note>
 
 OAuth는 atproto에서 클라이언트가 PDS 인스턴스에 대해 권한 있는 요청을 수행하기 위한 주요 메커니즘입니다. 대부분의 사용자 대상 소프트웨어는 OAuth를 사용하도록 설계되어 있으며, 여기에는 모바일 앱, 리치 브라우저 앱, 네이티브 데스크톱 앱과 같은 "프론트엔드" 클라이언트뿐 아니라 웹 서비스와 같은 "백엔드" 클라이언트도 포함됩니다.
@@ -179,10 +179,10 @@ OAuth 2.0 명세에서는, 클라이언트가 요청한 스코프와 다른 스�
     - 대부분의 Lexicon 엔드포인트에 대한 API 접근 및 서비스 프록시 기능(서비스 제공자 DID에 의해 식별)
     - 클라이언트가 접근 권한이 있는 특정 API 엔드포인트에 대해 서비스 인증 토큰을 생성할 수 있음
     - 계정 관리 작업(핸들 변경, 이메일 변경, 계정 삭제/비활성화, 계정 마이그레이션) 불가
-    - DM(다이렉트 메시지) 접근 불가(`chat.bsky.*` Lexicon 제외)
-- `transition:chat.bsky`: "앱 비밀번호"에 DM 접근 토글을 추가한 것과 동일.
-    - `chat.bsky` Lexicon에 대한 API 엔드포인트 및 서비스 프록시 기능
-    - `chat.bsky` Lexicon에 대해 서비스 인증 토큰 생성 가능
+    - DM(다이렉트 메시지) 접근 불가(`chat.gndr.*` Lexicon 제외)
+- `transition:chat.gndr`: "앱 비밀번호"에 DM 접근 토글을 추가한 것과 동일.
+    - `chat.gndr` Lexicon에 대한 API 엔드포인트 및 서비스 프록시 기능
+    - `chat.gndr` Lexicon에 대해 서비스 인증 토큰 생성 가능
     - 이 스코프는 반드시 `transition:generic` 스코프에 의존하며, 단독으로 동작하지 않습니다.
 
 ## 인증 요청
